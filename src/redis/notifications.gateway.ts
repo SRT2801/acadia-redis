@@ -43,14 +43,12 @@ export class NotificationsGateway implements OnGatewayConnection, OnGatewayDisco
 
       client.userId = payload.userId;
       client.join(`user:${payload.userId}`);
-      console.log(`[Redis WS] User ${payload.userId} connected`);
     } catch {
       client.disconnect();
     }
   }
 
   handleDisconnect(client: AuthenticatedSocket) {
-    console.log(`[Redis WS] User ${client.userId} disconnected`);
   }
 
   emitNotification(userId: number, notification: any) {

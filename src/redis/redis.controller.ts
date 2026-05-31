@@ -35,8 +35,6 @@ export class RedisController {
     try {
       const { userId, notification } = pushDto;
 
-      console.log('[Redis] pushNotificationInternal called:', { userId, notification });
-
       if (!notification.id) {
         notification.id = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
       }
@@ -52,7 +50,6 @@ export class RedisController {
 
       return { success: true, notification };
     } catch (error) {
-      console.error('[Redis] Error in pushNotificationInternal:', error);
       throw error;
     }
   }
