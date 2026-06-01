@@ -15,7 +15,7 @@ interface AuthenticatedSocket extends Socket {
 @WebSocketGateway({
   namespace: "/notifications",
   cors: {
-    origin: "*",
+    origin: process.env.FRONTEND_URL ?? 'http://localhost:4200',
     credentials: true,
   },
 })
