@@ -6,7 +6,7 @@ import { RedisService } from './redis/redis.service';
 async function bootstrap() {
   const app = await NestFactory.create(RedisMicroserviceModule);
   app.enableCors({
-    origin: '*',
+    origin: process.env.FRONTEND_URL ?? 'http://localhost:4200',
     credentials: true,
   });
   const configService = app.get(ConfigService);
